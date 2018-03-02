@@ -1,0 +1,28 @@
+hello_world:
+  module: hello
+  class: HelloWorld
+
+heaty_minimal:
+  # Obligatory settings that tell appdaemon where to find the app.
+  # You shouldn't need to change these two.
+  module: hass_apps_loader
+  class: HeatyApp
+
+  rooms:
+    # Define such a block for each room you want to control.
+    1st_floor:
+      thermostats:
+        climate.test:
+      schedule:
+      # - { temp: 64, start: "23:14", end: "23:15", weekdays: 1-5 }
+      # On weekends, set temperature to 20.5 °C from 8.15 am to 11.30 pm.
+      # - { temp: 20.5, start: "08:15", end: "23:30", weekdays: "6,7" }
+      # At all other times, set temperature to 16 °C.
+      - { temp: "OFF" }
+
+#    kitchen:
+#      thermostats:
+#        climate.heating_kitchen:
+#      schedule:
+      # ...
+

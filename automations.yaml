@@ -1,0 +1,71 @@
+- action:
+  - alias: Liam's Heat
+    data:
+      entity_id: climate.liams_heatpump
+      operation_mode: 'OFF'
+    service: climate.set_operation_mode
+  - alias: Dor's Heat
+    data:
+      entity_id: climate.dors_heatpump
+      operation_mode: 'OFF'
+    service: climate.set_operation_mode
+  alias: Kid's heat off in AM
+  condition: []
+  id: '1512533365810'
+  trigger:
+  - at: '6:45:00'
+    platform: time
+- action:
+  - alias: Dor's light off
+    data:
+      entity_id: switch.dors_room
+    service: switch.turn_off
+  - alias: Liam's light off
+    data:
+      entity_id: switch.liams_room
+    service: switch.turn_off
+  alias: Kid's lights off in AM
+  condition: []
+  id: '1512880706958'
+  trigger:
+  - at: 08:00:00
+    platform: time
+- action:
+  - alias: Liam's light on
+    data:
+      entity_id: switch.liams_room
+    service: switch.turn_on
+  - alias: Dor's light on
+    data:
+      entity_id: switch.dors_room
+    service: switch.turn_on
+  alias: Kid's wakeup lights
+  condition:
+    condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  id: '1512880947435'
+  trigger:
+  - at: '6:50:00'
+    platform: time
+- action:
+  - alias: Liam's heat
+    data:
+      entity_id: climate.liams_heatpump
+      operation_mode: 'ON'
+    service: climate.set_operation_mode
+  - alias: Dor's heat
+    data:
+      entity_id: climate.dors_heatpump
+      operation_mode: 'ON'
+    service: climate.set_operation_mode
+  alias: Kids heat on in PM
+  condition: []
+  id: '1514257580126'
+  trigger:
+  - at: '19:45:00'
+    platform: time

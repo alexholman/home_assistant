@@ -1,0 +1,9 @@
+kids_rooms:
+    name: Kids Rooms
+    view: no
+    entities:
+      - climate.liams_heatpump
+      - climate.dors_heatpump
+      - switch.dors_room
+      - switch.dors_bed_light
+      - switch.liams_room

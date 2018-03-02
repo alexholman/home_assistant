@@ -1,0 +1,161 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 42.3646
+  longitude: -71.1028
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 4
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/New_York
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+# introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Enable floorplan
+panel_custom:
+  - name: floorplan
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:home
+    url_path: floorplan
+    config: !include floorplan.yaml
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+# map:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  - platform: google
+
+# TP-Link switches
+switch:
+  - platform: tplink
+    host: 192.168.1.100
+  - platform: tplink
+    host: 192.168.1.101
+  - platform: tplink
+    host: 192.168.1.102
+#  - platform: tplink
+#    host: 192.168.1.103
+
+  - platform: rpi_gpio
+    invert_logic: True
+    ports:
+      18: Relay 1
+      23: Relay 2
+      24: Relay 3
+      25: Relay 4
+      
+# MQTT Broker
+mqtt:
+    broker: m14.cloudmqtt.com
+    port: 15034
+    username: homeassistant
+    password: 7jyxmchc
+
+# MQTT Test
+# hello_mqtt:
+#     topic: home-assistant/hello_mqtt
+
+# https://home-assistant.io/components/climate/
+climate:
+    # Heat Pumps
+  - platform: mitsubishi_mqtt
+    name: "1st_Fl Heatpump"
+    command_topic: "heatpump/02/set"
+    temperature_state_topic: "heatpump/02/status"
+    state_topic: "heatpump/02"
+    retain: "False"
+  - platform: mitsubishi_mqtt
+    name: "Bedroom Heatpump"
+    command_topic: "heatpump/01/set"
+    temperature_state_topic: "heatpump/01/status"
+    state_topic: "heatpump/01"
+  - platform: mitsubishi_mqtt
+    name: "Office Heatpump"
+    command_topic: "heatpump/03/set"
+    temperature_state_topic: "heatpump/03/status"
+    state_topic: "heatpump/03"
+  - platform: mitsubishi_mqtt
+    name: "Liam's Heatpump"
+    command_topic: "heatpump/04/set"
+    temperature_state_topic: "heatpump/04/status"
+    state_topic: "heatpump/04"
+  - platform: mitsubishi_mqtt
+    name: "Dor's Heatpump"
+    command_topic: "heatpump/05/set"
+    temperature_state_topic: "heatpump/05/status"
+    state_topic: "heatpump/05"
+    
+  # https://home-assistant.io/components/climate.generic_thermostat/
+  - platform: custom_thermostat
+    name: Test
+    heater: switch.relay_1
+    target_sensor: sensor.1st_floor_temp
+    min_temp: 50
+    max_temp: 70
+    target_temp: 55
+    
+sensor:
+  # Weather prediction
+  - platform: yr
+
+  # MQTT Temperature Sensor
+  # https://home-assistant.io/components/sensor.mqtt/
+  - platform: mqtt
+    state_topic: 'temp/01'
+    name: '1st Floor temp'
+    unit_of_measurement: '°C'
+    value_template: '{{ value_json.tempC }}'
+
+  - platform: heatpump_temp
+    heatpump: climate.1st_fl_heatpump
+
+# Z-Wave
+# zwave:
+#    usb_path: /dev/ttyACM0
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+

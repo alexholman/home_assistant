@@ -1,0 +1,154 @@
+2017-12-31 23:13:06.160 Always, OpenZwave Version 1.4.2586 Starting Up
+2017-12-31 23:13:09.548 Info, Setting Up Provided Network Key for Secure Communications
+2017-12-31 23:13:09.548 Warning, Failed - Network Key Not Set
+2017-12-31 23:13:09.548 Info, mgr,     Added driver for controller /dev/ttyACM0
+2017-12-31 23:13:09.549 Info,   Opening controller /dev/ttyACM0
+2017-12-31 23:13:09.549 Info, Trying to open serial port /dev/ttyACM0 (attempt 1)
+2017-12-31 23:13:09.549 Info, Serial port /dev/ttyACM0 opened (attempt 1)
+2017-12-31 23:13:09.550 Detail, contrlr, Queuing (Command) FUNC_ID_ZW_GET_VERSION: 0x01, 0x03, 0x00, 0x15, 0xe9
+2017-12-31 23:13:09.550 Detail, contrlr, Queuing (Command) FUNC_ID_ZW_MEMORY_GET_ID: 0x01, 0x03, 0x00, 0x20, 0xdc
+2017-12-31 23:13:09.550 Detail, contrlr, Queuing (Command) FUNC_ID_ZW_GET_CONTROLLER_CAPABILITIES: 0x01, 0x03, 0x00, 0x05, 0xf9
+2017-12-31 23:13:09.550 Detail, contrlr, Queuing (Command) FUNC_ID_SERIAL_API_GET_CAPABILITIES: 0x01, 0x03, 0x00, 0x07, 0xfb
+2017-12-31 23:13:09.550 Detail, contrlr, Queuing (Command) FUNC_ID_ZW_GET_SUC_NODE_ID: 0x01, 0x03, 0x00, 0x56, 0xaa
+2017-12-31 23:13:09.550 Detail, 
+2017-12-31 23:13:09.550 Info, contrlr, Sending (Command) message (Callback ID=0x00, Expected Reply=0x15) - FUNC_ID_ZW_GET_VERSION: 0x01, 0x03, 0x00, 0x15, 0xe9
+2017-12-31 23:13:09.552 Detail, contrlr,   Received: 0x01, 0x10, 0x01, 0x15, 0x5a, 0x2d, 0x57, 0x61, 0x76, 0x65, 0x20, 0x34, 0x2e, 0x30, 0x35, 0x00, 0x07, 0x91
+2017-12-31 23:13:09.552 Detail, 
+2017-12-31 23:13:09.552 Info, contrlr, Received reply to FUNC_ID_ZW_GET_VERSION:
+2017-12-31 23:13:09.552 Info, contrlr,     Bridge Controller library, version Z-Wave 4.05
+2017-12-31 23:13:09.552 Detail, Node045,   Expected reply was received
+2017-12-31 23:13:09.553 Detail, Node045,   Message transaction complete
+2017-12-31 23:13:09.553 Detail, 
+2017-12-31 23:13:09.553 Detail, contrlr, Removing current message
+2017-12-31 23:13:09.553 Detail, 
+2017-12-31 23:13:09.563 Info, contrlr, Sending (Command) message (Callback ID=0x00, Expected Reply=0x20) - FUNC_ID_ZW_MEMORY_GET_ID: 0x01, 0x03, 0x00, 0x20, 0xdc
+2017-12-31 23:13:09.566 Detail, contrlr,   Received: 0x01, 0x08, 0x01, 0x20, 0xc5, 0x54, 0x93, 0xc3, 0x01, 0x16
+2017-12-31 23:13:09.566 Detail, 
+2017-12-31 23:13:09.566 Info, contrlr, Received reply to FUNC_ID_ZW_MEMORY_GET_ID. Home ID = 0xc55493c3.  Our node ID = 1
+2017-12-31 23:13:09.567 Detail, Node084,   Expected reply was received
+2017-12-31 23:13:09.567 Detail, Node084,   Message transaction complete
+2017-12-31 23:13:09.567 Detail, 
+2017-12-31 23:13:09.567 Detail, contrlr, Removing current message
+2017-12-31 23:13:09.567 Detail, 
+2017-12-31 23:13:09.567 Info, contrlr, Sending (Command) message (Callback ID=0x00, Expected Reply=0x05) - FUNC_ID_ZW_GET_CONTROLLER_CAPABILITIES: 0x01, 0x03, 0x00, 0x05, 0xf9
+2017-12-31 23:13:09.569 Detail, contrlr,   Received: 0x01, 0x04, 0x01, 0x05, 0x28, 0xd7
+2017-12-31 23:13:09.577 Detail, 
+2017-12-31 23:13:09.577 Info, contrlr, Received reply to FUNC_ID_ZW_GET_CONTROLLER_CAPABILITIES:
+2017-12-31 23:13:09.577 Info, contrlr,     There is no SUC ID Server (SIS) in this network.
+2017-12-31 23:13:09.577 Info, contrlr,     The PC controller is a primary controller.
+2017-12-31 23:13:09.577 Detail, Node215,   Expected reply was received
+2017-12-31 23:13:09.577 Detail, Node215,   Message transaction complete
+2017-12-31 23:13:09.577 Detail, 
+2017-12-31 23:13:09.577 Detail, contrlr, Removing current message
+2017-12-31 23:13:09.577 Detail, 
+2017-12-31 23:13:09.577 Info, contrlr, Sending (Command) message (Callback ID=0x00, Expected Reply=0x07) - FUNC_ID_SERIAL_API_GET_CAPABILITIES: 0x01, 0x03, 0x00, 0x07, 0xfb
+2017-12-31 23:13:09.581 Detail, contrlr,   Received: 0x01, 0x2b, 0x01, 0x07, 0x04, 0x20, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0xf6, 0x81, 0x77, 0x88, 0xcf, 0x1f, 0x00, 0x00, 0xfb, 0x9f, 0x7d, 0xa0, 0x67, 0x00, 0x80, 0x80, 0x00, 0x80, 0x86, 0x80, 0xba, 0x07, 0xe8, 0x73, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x60, 0x00, 0x00, 0xbe
+2017-12-31 23:13:09.581 Detail, 
+2017-12-31 23:13:09.581 Info, contrlr,  Received reply to FUNC_ID_SERIAL_API_GET_CAPABILITIES
+2017-12-31 23:13:09.581 Info, contrlr,     Serial API Version:   4.32
+2017-12-31 23:13:09.581 Info, contrlr,     Manufacturer ID:      0x0000
+2017-12-31 23:13:09.581 Info, contrlr,     Product Type:         0x0001
+2017-12-31 23:13:09.581 Info, contrlr,     Product ID:           0x0001
+2017-12-31 23:13:09.581 Detail, contrlr, Queuing (Command) FUNC_ID_ZW_GET_VIRTUAL_NODES: 0x01, 0x03, 0x00, 0xa5, 0x59
+2017-12-31 23:13:09.581 Detail, contrlr, Queuing (Command) FUNC_ID_SERIAL_API_GET_INIT_DATA: 0x01, 0x03, 0x00, 0x02, 0xfe
+2017-12-31 23:13:09.581 Detail, contrlr, Queuing (Command) FUNC_ID_SERIAL_API_APPL_NODE_INFORMATION: 0x01, 0x07, 0x00, 0x03, 0x01, 0x02, 0x01, 0x00, 0xf9
+2017-12-31 23:13:09.582 Detail, Node032,   Expected reply was received
+2017-12-31 23:13:09.582 Detail, Node032,   Message transaction complete
+2017-12-31 23:13:09.582 Detail, 
+2017-12-31 23:13:09.582 Detail, contrlr, Removing current message
+2017-12-31 23:13:09.582 Detail, 
+2017-12-31 23:13:09.582 Info, contrlr, Sending (Command) message (Callback ID=0x00, Expected Reply=0x56) - FUNC_ID_ZW_GET_SUC_NODE_ID: 0x01, 0x03, 0x00, 0x56, 0xaa
+2017-12-31 23:13:09.584 Detail, contrlr,   Received: 0x01, 0x04, 0x01, 0x56, 0x00, 0xac
+2017-12-31 23:13:09.584 Detail, 
+2017-12-31 23:13:09.584 Info, contrlr, Received reply to GET_SUC_NODE_ID.  Node ID = 0
+2017-12-31 23:13:09.584 Info, Controller Does not Support SUC - Cannot Setup Controller as SUC Node
+2017-12-31 23:13:09.584 Detail, Node172,   Expected reply was received
+2017-12-31 23:13:09.584 Detail, Node172,   Message transaction complete
+2017-12-31 23:13:09.584 Detail, 
+2017-12-31 23:13:09.584 Detail, contrlr, Removing current message
+2017-12-31 23:13:09.584 Detail, 
+2017-12-31 23:13:09.584 Info, contrlr, Sending (Command) message (Callback ID=0x00, Expected Reply=0xa5) - FUNC_ID_ZW_GET_VIRTUAL_NODES: 0x01, 0x03, 0x00, 0xa5, 0x59
+2017-12-31 23:13:09.588 Detail, contrlr,   Received: 0x01, 0x20, 0x01, 0xa5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7b
+2017-12-31 23:13:09.588 Detail, 
+2017-12-31 23:13:09.588 Info, contrlr, Received reply to FUNC_ID_ZW_GET_VIRTUAL_NODES
+2017-12-31 23:13:09.588 Info, contrlr,     (none reported)
+2017-12-31 23:13:09.588 Detail,   Expected reply was received
+2017-12-31 23:13:09.588 Detail,   Message transaction complete
+2017-12-31 23:13:09.588 Detail, 
+2017-12-31 23:13:09.588 Detail, contrlr, Removing current message
+2017-12-31 23:13:09.588 Detail, 
+2017-12-31 23:13:09.588 Info, contrlr, Sending (Command) message (Callback ID=0x00, Expected Reply=0x02) - FUNC_ID_SERIAL_API_GET_INIT_DATA: 0x01, 0x03, 0x00, 0x02, 0xfe
+2017-12-31 23:13:09.681 Detail, contrlr,   Received: 0x01, 0x25, 0x01, 0x02, 0x05, 0x00, 0x1d, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0xc5
+2017-12-31 23:13:09.681 Detail, 
+2017-12-31 23:13:09.681 Info, mgr,     Driver with Home ID of 0xc55493c3 is now ready.
+2017-12-31 23:13:09.681 Info, 
+2017-12-31 23:13:09.682 Info, contrlr, Received reply to FUNC_ID_SERIAL_API_GET_INIT_DATA:
+2017-12-31 23:13:09.682 Info, contrlr,     Node 001 - Known
+2017-12-31 23:13:09.682 Detail, Node001, AdvanceQueries queryPending=0 queryRetries=0 queryStage=CacheLoad live=1
+2017-12-31 23:13:09.682 Detail, Node001, QueryStage_CacheLoad
+2017-12-31 23:13:09.682 Info, Node001, Node Identity Codes: 0000:0001:0001
+2017-12-31 23:13:09.682 Detail, Node001, QueryStage_Associations
+2017-12-31 23:13:09.682 Detail, Node001, QueryStage_Neighbors
+2017-12-31 23:13:09.682 Detail, contrlr, Requesting routing info (neighbor list) for Node 1
+2017-12-31 23:13:09.682 Detail, Node001, Queuing (Command) Get Routing Info (Node=1): 0x01, 0x07, 0x00, 0x80, 0x01, 0x00, 0x00, 0x03, 0x7a
+2017-12-31 23:13:09.682 Detail, Node001, Queuing (Query) Query Stage Complete (Neighbors)
+2017-12-31 23:13:09.682 Detail,   Expected reply was received
+2017-12-31 23:13:09.682 Detail,   Message transaction complete
+2017-12-31 23:13:09.683 Detail, 
+2017-12-31 23:13:09.683 Detail, contrlr, Removing current message
+2017-12-31 23:13:09.683 Detail, Node001, Notification: DriverReady
+2017-12-31 23:13:09.685 Detail, Node001, Notification: NodeAdded
+2017-12-31 23:13:09.692 Detail, Node001, Notification: NodeProtocolInfo
+2017-12-31 23:13:09.697 Detail, Node001, Notification: EssentialNodeQueriesComplete
+2017-12-31 23:13:09.699 Detail, Node001, Notification: ValueAdded
+2017-12-31 23:13:09.702 Detail, 
+2017-12-31 23:13:09.702 Info, contrlr, Sending (Command) message (Callback ID=0x00, Expected Reply=0x00) - FUNC_ID_SERIAL_API_APPL_NODE_INFORMATION: 0x01, 0x07, 0x00, 0x03, 0x01, 0x02, 0x01, 0x00, 0xf9
+2017-12-31 23:13:09.705 Detail, contrlr, Removing current message
+2017-12-31 23:13:09.705 Detail, 
+2017-12-31 23:13:09.705 Info, Node001, Sending (Command) message (Callback ID=0x00, Expected Reply=0x80) - Get Routing Info (Node=1): 0x01, 0x07, 0x00, 0x80, 0x01, 0x00, 0x00, 0x03, 0x7a
+2017-12-31 23:13:09.709 Detail, Node001,   Received: 0x01, 0x20, 0x01, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5e
+2017-12-31 23:13:09.710 Detail, 
+2017-12-31 23:13:09.710 Info, Node001, Received reply to FUNC_ID_ZW_GET_ROUTING_INFO
+2017-12-31 23:13:09.710 Info, Node001,     Neighbors of this node are:
+2017-12-31 23:13:09.710 Info, Node001,  (none reported)
+2017-12-31 23:13:09.710 Detail,   Expected reply was received
+2017-12-31 23:13:09.710 Detail,   Message transaction complete
+2017-12-31 23:13:09.710 Detail, 
+2017-12-31 23:13:09.710 Detail, Node001, Removing current message
+2017-12-31 23:13:09.710 Detail, Node001, Query Stage Complete (Neighbors)
+2017-12-31 23:13:09.710 Detail, Node001, AdvanceQueries queryPending=0 queryRetries=0 queryStage=Session live=1
+2017-12-31 23:13:09.710 Detail, Node001, QueryStage_Session
+2017-12-31 23:13:09.710 Detail, Node001, QueryStage_Dynamic
+2017-12-31 23:13:09.710 Detail, Node001, QueryStage_Configuration
+2017-12-31 23:13:09.710 Detail, Node001, QueryStage_Complete
+2017-12-31 23:13:09.710 Warning, CheckCompletedNodeQueries m_allNodesQueried=0 m_awakeNodesQueried=0
+2017-12-31 23:13:09.710 Warning, CheckCompletedNodeQueries all=1, deadFound=0 sleepingOnly=1
+2017-12-31 23:13:09.710 Info,          Node query processing complete.
+2017-12-31 23:13:09.710 Detail, Node001, Notification: NodeQueriesComplete
+2017-12-31 23:13:09.711 Detail, contrlr, Notification: AllNodesQueried
+2018-01-01 03:49:34.297 Info, mgr,     Manager::WriteConfig completed for driver with home ID of 0xc55493c3
+2018-01-01 03:49:35.299 Info, mgr,     Driver for controller /dev/ttyACM0 pending removal
+2018-01-01 03:49:35.300 Detail, Notification: DriverRemoved
+2018-01-01 03:49:35.300 Always, ***************************************************************************
+2018-01-01 03:49:35.300 Always, *********************  Cumulative Network Statistics  *********************
+2018-01-01 03:49:35.300 Always, *** General
+2018-01-01 03:49:35.300 Always, Driver run time: . .  . 0 days, 4 hours, 36 minutes
+2018-01-01 03:49:35.300 Always, Frames processed: . . . . . . . . . . . . . . . . . . . . 8
+2018-01-01 03:49:35.300 Always, Total messages successfully received: . . . . . . . . . . 8
+2018-01-01 03:49:35.300 Always, Total Messages successfully sent: . . . . . . . . . . . . 9
+2018-01-01 03:49:35.300 Always, ACKs received from controller:  . . . . . . . . . . . . . 9
+2018-01-01 03:49:35.300 Always, *** Errors
+2018-01-01 03:49:35.300 Always, Unsolicited messages received while waiting for ACK:  . . 0
+2018-01-01 03:49:35.301 Always, Reads aborted due to timeouts:  . . . . . . . . . . . . . 0
+2018-01-01 03:49:35.301 Always, Bad checksum errors:  . . . . . . . . . . . . . . . . . . 0
+2018-01-01 03:49:35.301 Always, CANs received from controller:  . . . . . . . . . . . . . 0
+2018-01-01 03:49:35.301 Always, NAKs received from controller:  . . . . . . . . . . . . . 0
+2018-01-01 03:49:35.301 Always, Out of frame data flow errors:  . . . . . . . . . . . . . 0
+2018-01-01 03:49:35.301 Always, Messages retransmitted: . . . . . . . . . . . . . . . . . 0
+2018-01-01 03:49:35.301 Always, Messages dropped and not delivered: . . . . . . . . . . . 0
+2018-01-01 03:49:35.301 Always, ***************************************************************************
+2018-01-01 03:49:35.301 Detail, WriteMsg Wait Timeout m_currentMsg=00000000
+2018-01-01 03:49:37.304 Info, mgr,     Driver for controller /dev/ttyACM0 removed
+2018-01-01 03:49:38.312 Error, mgr,     Manager::GetDriver failed - Home ID 0xc55493c3 is unknown
+2018-01-01 03:49:38.312 Warning, Exception: Manager.cpp:373 - 100 - Invalid HomeId passed to GetDriver
+2018-01-01 03:49:38.312 Info, mgr,     GetSendQueueCount() failed - _homeId -984312893 not found

@@ -1,0 +1,29 @@
+secrets: /home/homeassistant/.homeassistant/secrets.yaml
+log:
+  accessfile: /home/homeassistant/.homeassistant/logs/access.log
+  errorfile: /home/homeassistant/.homeassistant/logs/error.log
+  logfile: /home/homeassistant/.homeassistant/logs/appdaemon.log
+  log_generations: 3
+  log_size: 1024
+AppDaemon:
+  logfile: STDOUT
+  errorfile: STDERR
+  threads: 10
+  api_key: !secret appdaemon_key
+#  time_zone: <time zone>
+  api_port: 5000
+#  api_key: !secret api_key
+#  api_ssl_certificate: <path/to/root/CA/cert>
+#  api_ssl_key: <path/to/root/CA/key>
+  plugins:
+HASS:
+  type: hass
+  ha_key: !secret home_assistant_key
+  ha_url: http://hassbian.local:8123
+#     ha_key: <some key>
+#     cert_path: <path/to/root/CA/cert>
+#     cert_verify: True
+#     namespace: default
+HADashboard:
+  dash_url: http://hassbian.local:5050
+  dash_password: !secret dash_pass
