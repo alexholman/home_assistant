@@ -6,7 +6,7 @@ import asyncio
 import logging
 
 from homeassistant.const import TEMP_FAHRENHEIT
-from homeassistant.helpers.entity import Entity, async_device_update
+from homeassistant.helpers.entity import Entity #, async_device_update
 
 import voluptuous as vol
 
@@ -67,9 +67,9 @@ class HeatpumpTemp(Entity):
     @asyncio.coroutine
     def async_update(self):
         """Update the state of the sensor."""
+        _LOGGER.warning('all states: {0}'.format(self._hass.states))
         # heatpump_states = yield from async_fetch_state(self._heatpump_entity_id)
-        heatpump_states = hass.states.get(self._heatpump_entity_id)
-        # heatpump_states = self._hass.states.get(self._heatpump_entity_id)
-        _LOGGER.warning('heatpump_states: {0}'.format(heatpump_states))
+        heatpump_states = self._hass.states.get(self._heatpump_entity_id)
+        _LOGGER.warning('hp name: {0}, state: {1}'.format(self._heatpump_entity_id, heatpump_states))
         self._state = heatpump_states.attributes.get('current_temperature')
         _LOGGER.debug("New temperature: %s", self._state)
