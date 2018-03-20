@@ -128,13 +128,12 @@ climate:
     state_topic: "heatpump/05"
     
   # https://home-assistant.io/components/climate.generic_thermostat/
-#  - platform: custom_thermostat
-#    name: Test
-#    heater: switch.relay_1
-#    target_sensor: sensor.1st_floor_temp
-#    min_temp: 50
-#    max_temp: 70
-#    target_temp: 55
+  - platform: heatpump_thermostat
+    name: Test
+    heater: climate.1st_fl_heatpump
+    min_temp: 55
+    max_temp: 70
+    target_temp: 55
     
 sensor:
   # Weather prediction
@@ -150,6 +149,7 @@ sensor:
 
   - platform: heatpump_temp
     heatpump: climate.1st_fl_heatpump
+    #heatpump: sensor.1st_floor_temp
 
 # Z-Wave
 # zwave:

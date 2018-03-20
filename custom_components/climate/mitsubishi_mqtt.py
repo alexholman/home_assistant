@@ -17,7 +17,7 @@ from homeassistant.components.climate import (
     SUPPORT_FAN_MODE, SUPPORT_SWING_MODE)
 
 from homeassistant.const import (
-    CONF_NAME, CONF_VALUE_TEMPLATE, TEMP_CELSIUS, ATTR_TEMPERATURE)
+    CONF_NAME, CONF_VALUE_TEMPLATE, TEMP_CELSIUS, ATTR_TEMPERATURE, STATE_UNKNOWN)
 
 import homeassistant.components.mqtt as mqtt
 import homeassistant.helpers.config_validation as cv
@@ -61,7 +61,8 @@ class MqttClimate(ClimateDevice):
 
     def __init__(self, hass, name, state_topic, temperature_state_topic, command_topic, qos, retain):
         """Initialize the MQTT Heatpump."""
-        self._state = False
+        # self._state = False
+        self._state = STATE_UNKNOWN
         self._hass = hass
         self._name = name
         self._state_topic = state_topic
@@ -170,6 +171,10 @@ class MqttClimate(ClimateDevice):
     def swing_list(self):
         """List of available swing modes."""
         return self._swing_list
+        
+    #@property
+    #def state(self):
+        #return 'hello_world'
 
     def set_temperature(self, **kwargs):
         """Set new target temperatures."""

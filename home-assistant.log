@@ -1,88 +1,118 @@
-2018-03-11 04:05:19 WARNING (Recorder) [homeassistant.components.recorder] Ended unfinished session (id=20 from 2018-03-11 03:59:06.005052)
-2018-03-11 04:05:23 WARNING (MainThread) [custom_components.sensor.heatpump_temp] hp name: climate.1st_fl_heatpump, state: None
-2018-03-11 04:05:24 ERROR (MainThread) [homeassistant.components.sensor] Error on device update!
+2018-03-20 02:41:26 WARNING (Recorder) [homeassistant.components.recorder] Ended unfinished session (id=59 from 2018-03-20 02:38:53.617652)
+2018-03-20 02:41:33 ERROR (MainThread) [homeassistant.core] Error doing job: Task exception was never retrieved
 Traceback (most recent call last):
-  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/helpers/entity_component.py", line 217, in async_add_entity
-    yield from entity.async_device_update(warning=False)
-  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/helpers/entity.py", line 304, in async_device_update
-    yield from self.async_update()
-  File "/usr/lib/python3.5/asyncio/coroutines.py", line 210, in coro
-    res = func(*args, **kw)
-  File "/home/homeassistant/.homeassistant/custom_components/sensor/heatpump_temp.py", line 75, in async_update
-    self._state = heatpump_states.attributes.get('current_temperature')
-AttributeError: 'NoneType' object has no attribute 'attributes'
-2018-03-11 04:05:43 WARNING (Thread-4) [netdisco.ssdp] Error fetching description at http://192.168.1.1:1990/WFADevice.xml
-2018-03-11 04:05:44 WARNING (Thread-4) [netdisco.ssdp] Error fetching description at http://192.168.1.254:1990/WFADevice.xml
-2018-03-11 04:06:01 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
-2018-03-11 04:06:01 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
-2018-03-11 04:06:01 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
-2018-03-11 04:06:02 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
-2018-03-11 04:06:02 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
-2018-03-11 04:06:02 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
-2018-03-11 04:36:44 ERROR (MainThread) [homeassistant.core] Error doing job: Fatal read error on socket transport
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/setup.py", line 60, in async_setup_component
+    return (yield from task)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 239, in _step
+    result = coro.send(None)
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/setup.py", line 159, in _async_setup_component
+    conf_util.async_process_component_config(hass, config, domain)
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/config.py", line 622, in async_process_component_config
+    platform = get_platform(domain, p_name)
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/loader.py", line 104, in get_platform
+    return get_component(PLATFORM_FORMAT.format(domain, platform))
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/loader.py", line 142, in get_component
+    module = importlib.import_module(path)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 673, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "/home/homeassistant/.homeassistant/custom_components/climate/heatpump_thermostat.py", line 378, in <module>
+    assert False
+AssertionError
+2018-03-20 02:41:38 WARNING (MainThread) [homeassistant.core] Unable to find service climate/set_operation_mode
+2018-03-20 02:41:43 WARNING (Thread-16) [netdisco.ssdp] Error fetching description at http://192.168.1.1:1990/WFADevice.xml
+2018-03-20 02:41:48 ERROR (MainThread) [homeassistant.components.media_player] Error while setting up platform plex
 Traceback (most recent call last):
-  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
-    data = self._sock.recv(self.max_size)
-OSError: [Errno 113] No route to host
-2018-03-11 04:36:48 ERROR (MainThread) [homeassistant.core] Error doing job: Fatal read error on socket transport
+  File "/srv/homeassistant/lib/python3.5/site-packages/urllib3/connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "/srv/homeassistant/lib/python3.5/site-packages/urllib3/util/connection.py", line 83, in create_connection
+    raise err
+  File "/srv/homeassistant/lib/python3.5/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
-  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
-    data = self._sock.recv(self.max_size)
-OSError: [Errno 113] No route to host
-2018-03-11 08:01:14 ERROR (zeroconf-ServiceBrowser__miio._udp.local.) [homeassistant.core] Error doing job: Future exception was never retrieved
+  File "/srv/homeassistant/lib/python3.5/site-packages/urllib3/connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "/srv/homeassistant/lib/python3.5/site-packages/urllib3/connectionpool.py", line 357, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.5/http/client.py", line 1107, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.5/http/client.py", line 1152, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.5/http/client.py", line 1103, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/srv/homeassistant/lib/python3.5/site-packages/urllib3/connection.py", line 166, in connect
+    conn = self._new_conn()
+  File "/srv/homeassistant/lib/python3.5/site-packages/urllib3/connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x66292d50>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/adapters.py", line 440, in send
+    timeout=timeout
+  File "/srv/homeassistant/lib/python3.5/site-packages/urllib3/connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "/srv/homeassistant/lib/python3.5/site-packages/urllib3/util/retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.1.108', port=32400): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x66292d50>: Failed to establish a new connection: [Errno 111] Connection refused',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/helpers/entity_component.py", line 171, in _async_setup_platform
+    SLOW_SETUP_MAX_WAIT, loop=self.hass.loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 400, in wait_for
+    return fut.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
   File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
     result = self.fn(*self.args, **self.kwargs)
-  File "/home/homeassistant/.homeassistant/custom_components/climate/mitsubishi_mqtt.py", line 102, in message_received
-    self.schedule_update_ha_state()
-  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/helpers/entity.py", line 273, in schedule_update_ha_state
-    self.hass.add_job(self.async_update_ha_state(force_refresh))
-AttributeError: 'NoneType' object has no attribute 'add_job'
-2018-03-11 08:39:17 WARNING (Thread-46) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:39:17 WARNING (Thread-44) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:39:17 WARNING (Thread-43) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:39:17 WARNING (Thread-42) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:39:17 WARNING (Thread-45) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:39:17 WARNING (Thread-41) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:39:25 ERROR (Thread-41) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:39:25 ERROR (Thread-45) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:39:25 ERROR (Thread-44) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:39:25 ERROR (Thread-43) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:39:25 ERROR (Thread-46) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:39:25 ERROR (Thread-42) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:45:09 WARNING (Thread-50) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:45:09 WARNING (Thread-47) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:45:10 WARNING (Thread-48) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:45:10 WARNING (Thread-52) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:45:10 WARNING (Thread-49) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:45:11 WARNING (Thread-51) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:45:17 ERROR (Thread-47) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:45:17 ERROR (Thread-50) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:45:17 ERROR (Thread-52) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:45:17 ERROR (Thread-48) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:45:17 ERROR (Thread-49) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:45:18 ERROR (Thread-51) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:48:06 WARNING (Thread-28) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:48:06 WARNING (Thread-26) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:48:15 WARNING (Thread-23) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:48:15 WARNING (Thread-25) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:48:15 WARNING (Thread-24) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:48:15 WARNING (Thread-27) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 08:48:18 ERROR (Thread-23) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:48:18 ERROR (Thread-27) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:48:18 ERROR (Thread-24) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:48:18 ERROR (Thread-25) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:48:21 ERROR (Thread-28) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 08:48:21 ERROR (Thread-26) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 09:30:21 WARNING (Thread-37) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 09:30:21 WARNING (Thread-36) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 09:30:21 WARNING (Thread-38) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 09:30:21 WARNING (Thread-39) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 09:30:21 WARNING (Thread-35) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 09:30:21 WARNING (Thread-40) [pychromecast.socket_client] Heartbeat timeout, resetting connection
-2018-03-11 09:30:37 ERROR (Thread-39) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 09:30:37 ERROR (Thread-37) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 09:30:37 ERROR (Thread-35) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 09:30:37 ERROR (Thread-40) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 09:30:37 ERROR (Thread-38) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
-2018-03-11 09:30:37 ERROR (Thread-36) [pychromecast.socket_client] Failed to connect, retrying in 5.0s
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/components/media_player/plex.py", line 87, in setup_platform
+    hass, config, add_devices_callback
+  File "/srv/homeassistant/lib/python3.5/site-packages/homeassistant/components/media_player/plex.py", line 106, in setup_plexserver
+    token, cert_session
+  File "/srv/homeassistant/lib/python3.5/site-packages/plexapi/server.py", line 103, in __init__
+    data = self.query(self.key, timeout=timeout)
+  File "/srv/homeassistant/lib/python3.5/site-packages/plexapi/server.py", line 341, in query
+    response = method(url, headers=headers, timeout=timeout, **kwargs)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/sessions.py", line 521, in get
+    return self.request('GET', url, **kwargs)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/srv/homeassistant/lib/python3.5/site-packages/requests/adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='192.168.1.108', port=32400): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x66292d50>: Failed to establish a new connection: [Errno 111] Connection refused',))
+2018-03-20 02:41:58 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
+2018-03-20 02:41:59 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
+2018-03-20 02:41:59 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
+2018-03-20 02:41:59 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
+2018-03-20 02:41:59 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
+2018-03-20 02:42:00 WARNING (MainThread) [homeassistant.components.media_player] Setup of platform cast is taking over 10 seconds.
+2018-03-20 02:42:18 WARNING (MainThread) [homeassistant.core] Unable to find service climate/set_operation_mode
+2018-03-20 02:42:58 WARNING (MainThread) [homeassistant.core] Unable to find service climate/set_operation_mode
+2018-03-20 02:43:38 WARNING (MainThread) [homeassistant.core] Unable to find service climate/set_operation_mode
+2018-03-20 02:44:18 WARNING (MainThread) [homeassistant.core] Unable to find service climate/set_operation_mode

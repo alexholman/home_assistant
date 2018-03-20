@@ -13,7 +13,8 @@ from homeassistant.core import callback
 from homeassistant.core import DOMAIN as HA_DOMAIN
 from homeassistant.components.climate import (
     STATE_HEAT, STATE_COOL, STATE_IDLE, ClimateDevice, PLATFORM_SCHEMA,
-    STATE_AUTO, ATTR_OPERATION_MODE, SUPPORT_OPERATION_MODE,
+    STATE_AUTO, ATTR_OPERATION_MODE, SUPPORT_OPERATION_MODE, 
+    SERVICE_SET_OPERATION_MODE, SERVICE_SET_TEMPERATURE,
     SUPPORT_TARGET_TEMPERATURE)
 from homeassistant.const import (
     ATTR_UNIT_OF_MEASUREMENT, STATE_ON, STATE_OFF, ATTR_TEMPERATURE,
@@ -29,7 +30,7 @@ _LOGGER = logging.getLogger(__name__)
 DEPENDENCIES = ['climate',]
 
 DEFAULT_TOLERANCE = 1
-DEFAULT_NAME = 'Generic Thermostat'
+DEFAULT_NAME = 'Combo Thermostat'
 
 CONF_HEATER = 'heater'
 # CONF_SENSOR = 'target_sensor'
@@ -66,6 +67,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 
 @asyncio.coroutine
 def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
+
     """Set up the generic thermostat platform."""
     name = config.get(CONF_NAME)
     heater_entity_id = config.get(CONF_HEATER)
@@ -119,6 +121,8 @@ class HeatpumpThermostat(ClimateDevice):
         self._cur_temp = None
         self._min_temp = min_temp
         self._max_temp = max_temp
+        self._min_heating_temp = 61 # set these by either parameter, or pull from heatpump attribs
+        self._max_cooling_temp = 88 # set these by either parameter, or pull from heatpump attribs
         self._target_temp = target_temp
         self._unit = hass.config.units.temperature_unit
 
@@ -271,7 +275,7 @@ class HeatpumpThermostat(ClimateDevice):
 
         try:
             self._cur_temp = self.hass.config.units.temperature(
-                float(state.state), unit)
+                float(state.attributes['current_temperature']), unit)
         except ValueError as ex:
             _LOGGER.error('Unable to update from sensor: %s', ex)
 
@@ -303,33 +307,39 @@ class HeatpumpThermostat(ClimateDevice):
 
         if self.ac_mode:
             is_cooling = self._is_device_active
-            if is_cooling:
-                too_cold = self._target_temp - self._cur_temp >= \
-                    self._cold_tolerance
-                if too_cold:
-                    _LOGGER.info('Turning off AC %s', self.heater_entity_id)
-                    self._heater_turn_off()
-            else:
-                too_hot = self._cur_temp - self._target_temp >= \
-                    self._hot_tolerance
-                if too_hot:
-                    _LOGGER.info('Turning on AC %s', self.heater_entity_id)
-                    self._heater_turn_on()
+            #if is_cooling:
+                #too_cold = self._target_temp - self._cur_temp >= \
+                    #self._cold_tolerance
+                #if too_cold:
+                    #_LOGGER.info('Turning off AC %s', self.heater_entity_id)
+                    #self._heater_turn_off()
+            #else:
+                #too_hot = self._cur_temp - self._target_temp >= \
+                    #self._hot_tolerance
+                #if too_hot:
+                    #_LOGGER.info('Turning on AC %s', self.heater_entity_id)
+                    #self._heater_turn_on()
         else:
             is_heating = self._is_device_active
-            if is_heating:
+            if self._target_temp < self._min_heating_temp: # or operation mode is off
+                if is_heating:
+                    _LOGGER.info('Turning of heatpump {0}'.format(self.heater_entity_id))
+                    self._heatpump_set_mode('OFF')
+                else:
+                    return 
+            elif is_heating:
                 too_hot = self._cur_temp - self._target_temp >= \
                     self._hot_tolerance
                 if too_hot:
-                    _LOGGER.info('Turning off heater %s',
+                    _LOGGER.info('Turning heatpump %s to FAN',
                                  self.heater_entity_id)
-                    self._heater_turn_off()
+                    self._heatpump_set_mode('FAN')
             else:
                 too_cold = self._target_temp - self._cur_temp >= \
                     self._cold_tolerance
                 if too_cold:
-                    _LOGGER.info('Turning on heater %s', self.heater_entity_id)
-                    self._heater_turn_on()
+                    _LOGGER.info('Turning heatpump %s to HEAT', self.heater_entity_id)
+                    self._heatpump_set_mode('HEAT')
 
     @property
     def _is_device_active(self):
@@ -341,16 +351,28 @@ class HeatpumpThermostat(ClimateDevice):
         """Return the list of supported features."""
         return SUPPORT_FLAGS
 
-    @callback
-    def _heater_turn_on(self):
-        """Turn heater toggleable device on."""
-        data = {ATTR_ENTITY_ID: self.heater_entity_id}
-        self.hass.async_add_job(
-            self.hass.services.async_call(HA_DOMAIN, SERVICE_TURN_ON, data))
+    #@callback
+    #def _heater_turn_on(self):
+        #"""Turn heater toggleable device on."""
+        #data = {ATTR_ENTITY_ID: self.heater_entity_id}
+        #self.hass.async_add_job(
+            #self.hass.services.async_call(HA_DOMAIN, SERVICE_TURN_ON, data))
 
     @callback
-    def _heater_turn_off(self):
-        """Turn heater toggleable device off."""
-        data = {ATTR_ENTITY_ID: self.heater_entity_id}
+    def _heatpump_set_mode(self, mode):
+        """Set heater operation mode to heat."""
+        # TODO: should be a call to the heatpump entity for these, probably done in setup
+        #assert mode in ["OFF", "HEAT", "DRY", "COOL", "FAN", "AUTO"]
+        data = {ATTR_ENTITY_ID: self.heater_entity_id,
+                ATTR_OPERATION_MODE: mode}
         self.hass.async_add_job(
-            self.hass.services.async_call(HA_DOMAIN, SERVICE_TURN_OFF, data))
+            self.hass.services.async_call(HA_DOMAIN, SERVICE_SET_OPERATION_MODE, data))
+
+    #@callback
+    #def _heater_turn_off(self):
+        #"""Turn heater toggleable device off."""
+        #data = {ATTR_ENTITY_ID: self.heater_entity_id}
+        #self.hass.async_add_job(
+            #self.hass.services.async_call(HA_DOMAIN, SERVICE_TURN_OFF, data))
+
+
